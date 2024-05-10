@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": ["es2021"],
+    "module": "commonjs",
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "skipLibCheck": true,
+    "allowJs": true,
+    "maxNodeModuleJsDepth": 10
+
+  },
+  "exclude": ["node_modules", "tmp", "dist", "**/*.spec.ts", "**/*.test.ts"],
+  "include": ["src"]
+}
