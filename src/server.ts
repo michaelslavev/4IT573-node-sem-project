@@ -6,6 +6,8 @@ import {PORT} from "./utils/config";
 import morgan from "morgan";
 import authRoutes from './routes/authRoutes';
 import newsletterRoutes from "./routes/newsletterRoutes";
+import publishingRoutes from "./routes/publishingRoutes";
+import subscriptionRoutes from "./routes/subscriptionRoutes";
 
 const init = async () => {
     dotenv.config();
@@ -20,8 +22,9 @@ const init = async () => {
     // Routes
     app.use('/api/auth', authRoutes);
     app.use('/api/newsletters', newsletterRoutes);
-    //app.use('/api/subscriptions', subscriptionRoutes);
-    //app.use('/api/posts', publishingRoutes);
+    app.use('/api/posts', publishingRoutes);
+    app.use('/api/subscriptions', subscriptionRoutes);
+
 
 
     // Start server

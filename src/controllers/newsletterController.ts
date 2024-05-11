@@ -20,6 +20,9 @@ export const createNewsletterController = async (req: Request, res: Response) =>
     }]);
 
   if (error) {
+    if (error.code === '42501'){
+      return res.status(403).json({ message: 'Forbidden' });
+    }
     return res.status(500).json({ message: 'Failed to create newsletter', error });
   }
 
@@ -33,6 +36,9 @@ export const listNewslettersController = async (req: Request, res: Response) => 
     .order('title', { ascending: true });
 
   if (error) {
+    if (error.code === '42501'){
+      return res.status(403).json({ message: 'Forbidden' });
+    }
     return res.status(500).json({ message: 'Failed to fetch newsletters'});
   }
 
@@ -49,6 +55,9 @@ export const updateNewsletterController = async (req: Request, res: Response) =>
     .eq('id', id);
 
   if (error) {
+    if (error.code === '42501'){
+      return res.status(403).json({ message: 'Forbidden' });
+    }
     return res.status(500).json({ message: 'Failed to update newsletter', error });
   }
 
