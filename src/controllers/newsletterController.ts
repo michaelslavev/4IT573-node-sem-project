@@ -17,7 +17,9 @@ export const createNewsletterController = async (req: Request, res: Response) =>
       title: title,
       description: description,
       editor_id: user.sub
-    }]);
+    }])
+    .select()
+    .single();
 
   if (error) {
     if (error.code === '42501'){
@@ -26,7 +28,7 @@ export const createNewsletterController = async (req: Request, res: Response) =>
     return res.status(500).json({ message: 'Failed to create newsletter', error });
   }
 
-  res.status(200).json(data);
+  res.status(201).json(data);
 };
 
 export const listNewslettersController = async (req: Request, res: Response) => {

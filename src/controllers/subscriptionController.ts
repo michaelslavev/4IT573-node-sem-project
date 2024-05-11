@@ -21,7 +21,9 @@ export const subscribeToNewsletter = async (req: Request, res: Response) => {
       newsletter_id: id,
       subscriber_id: user.sub,
       subscriber_email: user.email
-    }]);
+    }])
+    .select()
+    .single();
 
   const newsletter = await supabaseAuthClient(req)
     .from('newsletters')
@@ -54,7 +56,7 @@ export const subscribeToNewsletter = async (req: Request, res: Response) => {
     ),
   });
 
-  res.status(200).json(data);
+  res.status(201).json(data);
 };
 
 export const unsubscribeFromNewsletter = async (req: Request, res: Response) => {

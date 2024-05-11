@@ -11,7 +11,9 @@ export const createPost = async (req: Request, res: Response) => {
     .insert([{
       title: title,
       content: content,
-      newsletter_id: newsletterId }]);
+      newsletter_id: newsletterId }])
+    .select()
+    .single();
 
   if (error) {
     if (error.code === '42501'){
@@ -51,7 +53,7 @@ export const createPost = async (req: Request, res: Response) => {
     });
   }
 
-  res.status(200).json(data);
+  res.status(201).json(data);
 };
 
 export const listPosts = async (req: Request, res: Response) => {
